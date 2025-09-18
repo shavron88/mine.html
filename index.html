@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Surprise!</title>
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+
+
+
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .page {
+            min-height: 100vh;
+            display: none;
+            position: relative;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+        /* Navigation */
+
+
+
+
+
+
+
+
+
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+
+
+
+
+
+        /* Page 1 - Welcome */
+
+
+
+
+
+
+
+        .page1 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .surprise-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+
+
+        
+        .click-to-start {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .click-to-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+
+
+
+
+
+
+        /* Page 2 - Photo Memories */
+
+
+
+
+
+
+
+        .page2 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 2rem 0;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+
+
+
+
+
+        /* Page 3 - Our Journey */
+
+
+
+
+
+
+
+
+
+        .page3 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .timeline {
+            max-width: 600px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) { text-align: right; padding-right: 50%; }
+        .timeline-item:nth-child(even) { text-align: left; padding-left: 50%; }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #ff9a9e;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+
+
+
+
+
+
+        /* Page 4 - Why You're Special */
+
+
+
+
+
+
+
+        .page4 {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 2rem 0;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .reason-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+
+
+
+
+        /* Page 5 - Wishes & Dreams */
+
+
+
+
+
+
+        .page5 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .wishes-container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .wish-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.7);
+            font-size: 20px;
+            animation: floatUp 6s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+
+
+
+
+        /* Page 6 - Final Message */
+
+
+
+
+
+        .page6 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+            text-align: center;
+        }
+
+        .final-message {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .birthday-cake {
+            font-size: 5rem;
+            margin: 2rem 0;
+            animation: rotate 4s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confettiFall 3s infinite linear;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Typography */
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <div class="nav">
+        <button class="nav-btn" onclick="showPage(1)">🏠</button>
+        <button class="nav-btn" onclick="showPage(2)">📸</button>
+        <button class="nav-btn" onclick="showPage(3)">📖</button>
+        <button class="nav-btn" onclick="showPage(4)">💝</button>
+        <button class="nav-btn" onclick="showPage(5)">🌟</button>
+        <button class="nav-btn" onclick="showPage(6)">🎂</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Page 1: Welcome -->
+
+
+
+
+    <div class="page page1 active">
+
+        <h1 class="welcome-title">🎉 SURPRISE! 🎉</h1>
+
+        <div class="surprise-box">
+
+            <h2>It's Your Special Day!</h2>
+
+            <p>I've created something special just for you...</p>
+
+            <p>A journey through our memories, my feelings, and all the reasons why you mean the world to me.</p>
+
+            <button class="click-to-start" onclick="showPage(2)">
+                ✨ Begin the Journey ✨
+            </button>
+
+        </div>
+
+
+        <p style="margin-top: 2rem; font-size: 1.2rem;">
+            <span class="highlight">Happy Birthday, Beautiful Soul! 🎂</span>
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Page 2: Photo Memories -->
+
+
+
+
+
+
+    <div class="page page2">
+        <h1>📸 my hidden feelings for you </h1>
+
+        <p>Every moment with you is a treasure worth keeping forever...</p>
+        
+        <div class="photo-gallery">
+
+            <div class="photo-frame">
+                <div class="photo-placeholder"> 🫣 the time when we start talking like a friends</div>
+                <p style="color: #333; text-align: center;">your quirks make you beautiful, your softness makes you strong, you are a silly song I love to sing along."</p>
+            </div>
+
+
+            <div class="photo-frame">
+                <div class="photo-placeholder"> 🫨 when you say love you to me</div>
+                <p style="color: #333; text-align: center;"> babe you lightup my world like nobody else!</p>
+            </div>
+
+
+
+            <div class="photo-frame">
+                <div class="photo-placeholder">🌟 when we begin waterpark Together</div>
+                <p style="color: #333; text-align: center;"> its so memorable yeah as i am dumb i donot remeber all but i  knew it i was so happy</p>
+            </div>
+
+
+            <div class="photo-frame">
+                <div class="photo-placeholder">💕 when you give me time and love when i need it  </div>
+                <p style="color: #333; text-align: center;"> maybe you dont know it but you really heal me </p>
+            </div>
+
+
+            <div class="photo-frame">
+                <div class="photo-placeholder">🎭 when you bare my mood swings</div>
+                <p style="color: #333; text-align: center;"> i really feel valuable and love to get  more attention  </p>
+            </div>
+
+
+            <div class="photo-frame">
+                <div class="photo-placeholder">💢when you get angry on me</div>
+                <p style="color: #333; text-align: center;">bura na mano baat ka ia ishq ha gila nahi</p>
+            </div>
+
+
+        </div>
+        
+        <button class="click-to-start" onclick="showPage(3)" style="margin-top: 2rem;">
+            Continue Our Story →
+        </button>
+    </div>
+
+
+
+
+
+
+    <!-- Page 3: Our Journey -->
+
+
+
+
+
+
+
+    <div class="page page3">
+
+        <h1>📖 Our Journey Together</h1>
+
+        <p>Every chapter of our story is written by nature...</p>
+        
+        <div class="timeline">
+
+
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">The Beginning</h3>
+                    <p style="color: #333;"> when we first meet i know i was rude and introvert but as miss change my chair from front to middle btw you all i start feeling good with you and bobo you both help me to come to of my shells</p>
+                </div>
+
+
+                <div class="timeline-dot"></div>
+            </div>
+
+
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">Growing Closer</h3>
+                    <p style="color: #333;">Through late-night conversations and shared dreams, we built something beautiful. Each day brought us closer together from class 8.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+
+
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">Creating Memories</h3>
+                    <p style="color: #333;">when i got angry on you becz once you cut my hair and becz of miss dua and recently about our relation i feel really guilty about everything but as you always accept me in your life i can never forget it and its also become a permenant memory of my life i realize till now i dont give you any beautiful memory but from now i try to.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+
+
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">Today & Forever</h3>
+                    <p style="color: #333;">And here we are - celebrating you, celebrating us, and looking forward to all the beautiful moments yet to come and i promise from now i will try never to hurt your feelings and try to be a good chapter of your life story.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+
+        </div>
+        
+
+
+        <button class="click-to-start" onclick="showPage(4)" style="margin-top: 2rem;">
+            Why You're Amazing →
+        </button>
+    </div>
+
+
+
+
+
+
+    <!-- Page 4: Why You're Special -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="page page4">
+
+        <h1>💝 Why You're Absolutely Amazing</h1>
+
+        <p>Let me count the ways you make this world brighter...</p>
+        
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <div class="reason-icon">😊</div>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Your Smile</h3>
+                <p>Your smile can turn the darkest day into sunshine. It's contagious and fills my heart with joy every single time.</p>
+            </div>
+
+
+
+            
+            <div class="reason-card">
+                <div class="reason-icon">💖</div>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Your Heart</h3>
+                <p>Your kindness and compassion touch everyone around you. You have the most beautiful soul I've ever known.</p>
+            </div>
+
+
+
+            
+            <div class="reason-card">
+                <div class="reason-icon">🌟</div>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Your Spirit</h3>
+                <p>Your energy is infectious. You bring life to every room you enter and make everything more fun and meaningful.</p>
+            </div>
+
+
+
+            
+            <div class="reason-card">
+                <div class="reason-icon">🧠</div>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Your Mind</h3>
+                <p>Your thoughts, ideas, and perspectives constantly amaze me. Conversations with you are pure magic.</p>
+            </div>
+
+
+
+            
+            <div class="reason-card">
+                <div class="reason-icon">🎯</div>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Your Dreams</h3>
+                <p>Your ambitions and goals inspire me. Watching you chase your dreams fills me with pride and admiration.</p>
+            </div>
+
+
+            
+            <div class="reason-card">
+                <div class="reason-icon">🤗</div>
+                <h3 style="color: #fff; margin-bottom: 1rem;">Your Presence</h3>
+                <p>Just being around you makes everything better. You have this incredible gift of making people feel valued and loved.</p>
+            </div>
+
+
+        </div>
+        
+        <button class="click-to-start" onclick="showPage(5)" style="margin-top: 2rem;">
+            My Wishes for You →
+        </button>
+    </div>
+
+
+
+
+
+    <!-- Page 5: Wishes & Dreams -->
+
+
+
+
+
+
+    <div class="page page5">
+        <div class="floating-hearts" id="heartsContainer"></div>
+        
+        <h1>🌟 My Birthday Wishes for You</h1>
+        <p>Here's what I hope this new year brings you...</p>
+        
+        <div class="wishes-container">
+            <div class="wish-item">
+                <strong>🎯 Success in Everything You Do</strong><br>
+                May all your goals be a lawyer going london and every else become achievements and your dreams travlling driving spotscar a loving surronding everything you want turn into reality. You deserve every success that comes your way.
+            </div>
+            
+            <div class="wish-item">
+                <strong>😄 Endless Joy and Laughter</strong><br>
+                May your days be filled with moments that make you smile, laugh until your cheeks hurt, and feel pure happiness in your heart.
+            </div>
+            
+            <div class="wish-item">
+                <strong>💪 Health and Strength</strong><br>
+                May you stay healthy, strong, and full of energy to chase all your adventures and live life to the fullest.
+            </div>
+            
+            <div class="wish-item">
+                <strong>💝 Love and Beautiful Relationships</strong><br>
+                May you be surrounded by people who appreciate you as much as I do, and may love fill every corner of your life.
+            </div>
+            
+            <div class="wish-item">
+                <strong>✨ Magic in Everyday Moments</strong><br>
+                May you find wonder in the ordinary, beauty in the simple, and magic in every day that unfolds before you.
+            </div>
+            
+            <div class="wish-item">
+                <strong>🌈 Endless Adventures</strong><br>
+                May this year bring you exciting new experiences, amazing adventures, and memories that will last a lifetime.
+            </div>
+        </div>
+        
+        <button class="click-to-start" onclick="showPage(6)" style="margin-top: 2rem;">
+            Final Surprise →
+        </button>
+    </div>
+
+
+
+
+
+    <!-- Page 6: Final Message -->
+
+
+
+
+
+    <div class="page page6">
+
+
+        <div id="confettiContainer"></div>
+        
+        <div class="final-message">
+
+
+            <div class="birthday-cake">🎂</div>
+            <h1>Happy Birthday ahm..ahm..!</h1>
+
+
+
+            <p style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;">
+                Today isn't just about celebrating another year of your life...
+            </p>
+
+
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">
+                It's about celebrating the incredible person you are, the joy you bring to everyone around you, and the beautiful impact you have on this world.
+            </p>
+
+
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">
+                <span class="highlight">You are extraordinary.</span> You are loved. You are appreciated more than words can express.
+            </p>
+
+
+            <p style="font-size: 1.3rem; color: #fff; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Thank you for being the amazing person you are, and here's to another year of wonderful adventures together! & for you special surprise wait till tommrow!!!! 🎉love you 
+            </p>
+
+            <div style="margin-top: 2rem; font-size: 1.5rem; color: #fff;">
+                🎈 🎊 🎁 🌟 💖 🌟 🎁 🎊 🎈
+            </div>
+        </div>
+        
+        <button class="click-to-start" onclick="showPage(1)" style="margin-top: 2rem;">
+            ↺ Relive the Magic
+        </button>
+
+    </div>
+
+
+
+
+
+    <script>
+
+
+
+        let currentPage = 1;
+
+        function showPage(pageNum) {
+
+
+
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+
+
+            
+            // Show selected page
+
+
+
+            document.querySelector('.page' + pageNum).classList.add('active');
+            currentPage = pageNum;
+
+
+            
+            // Special effects for certain pages
+
+
+
+
+            if (pageNum === 5) {
+                createFloatingHearts();
+            }
+            if (pageNum === 6) {
+                createConfetti();
+            }
+        }
+
+
+
+
+        function createFloatingHearts() {
+            const container = document.getElementById('heartsContainer');
+            container.innerHTML = '';
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 8000);
+            }, 500);
+        }
+
+
+
+
+
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            container.innerHTML = '';
+            
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f53b57', '#5f27cd'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
+                        }
+                    }, 6000);
+                }, i * 100);
+            }
+        }
+
+        // Add some interactive hover effects
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Add click effects to photo frames
+
+            document.querySelectorAll('.photo-frame').forEach(frame => {
+                frame.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1) rotate(0deg)';
+                    }, 200);
+                });
+            });
+            
+            // Add click effects to reason cards
+
+            document.querySelectorAll('.reason-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const icon = this.querySelector('.reason-icon');
+                    icon.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        icon.style.transform = 'scale(1)';
+                    }, 300);
+                });
+            });
+        });
+
+        // Keyboard navigation
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && currentPage > 1) {
+                showPage(currentPage - 1);
+            } else if (e.key === 'ArrowRight' && currentPage < 6) {
+                showPage(currentPage + 1);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
